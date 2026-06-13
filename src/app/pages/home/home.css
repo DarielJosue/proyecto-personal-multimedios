@@ -1,0 +1,5 @@
+.home__status {
+  padding-block: calc(var(--navbar-height) + 3rem) 3rem;
+  text-align: center;
+  color: var(--color-muted);
+}
