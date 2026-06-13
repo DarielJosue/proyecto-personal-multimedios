@@ -1,0 +1,21 @@
+.footer {
+  background-color: var(--color-primary);
+  color: rgb(255 255 255 / 85%);
+  padding-block: 2.5rem;
+}
+
+.footer__title {
+  font-family: var(--font-heading);
+  color: #ffffff;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer__meta {
+  font-size: 0.875rem;
+  margin-bottom: 0.35rem;
+}
+
+.footer__meta:last-child {
+  margin-bottom: 0;
+}
