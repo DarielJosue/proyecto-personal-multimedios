@@ -1,0 +1,125 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--navbar-height);
+  background-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+}
+
+.navbar__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  height: 100%;
+  padding-inline: var(--section-padding-x);
+}
+
+.navbar__brand {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.navbar__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.navbar__toggle-bar {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 2px;
+}
+
+.navbar__nav {
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__link {
+  display: inline-block;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  padding-block: 0.5rem;
+  border-bottom: 2px solid transparent;
+  transition:
+    color var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.navbar__link:hover,
+.navbar__link:focus-visible {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+@media (max-width: 1280px) {
+  .navbar__toggle {
+    display: flex;
+  }
+
+  .navbar__nav {
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    background-color: var(--color-primary);
+    box-shadow: 0 8px 12px rgb(0 0 0 / 15%);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-0.5rem);
+    pointer-events: none;
+    transition:
+      opacity var(--transition-base),
+      transform var(--transition-base),
+      visibility var(--transition-base);
+  }
+
+  .navbar__nav--open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .navbar__menu {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.5rem 1.5rem 1rem;
+  }
+
+  .navbar__link {
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgb(255 255 255 / 15%);
+  }
+
+  .navbar__item:last-child .navbar__link {
+    border-bottom: none;
+  }
+}
