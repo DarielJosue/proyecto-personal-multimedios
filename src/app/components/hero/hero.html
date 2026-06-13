@@ -1,1 +1,7 @@
-<p>hero works!</p>
+<section id="inicio" class="hero">
+  <div class="hero__content container">
+    <h1 class="hero__title">{{ title() }}</h1>
+    <p class="hero__subtitle">{{ subtitle() }}</p>
+    <a class="hero__cta" [href]="'#' + ctaFragment()">{{ ctaLabel() }}</a>
+  </div>
+</section>
