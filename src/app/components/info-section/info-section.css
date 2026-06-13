@@ -1,0 +1,58 @@
+.info-section {
+  padding-block: var(--section-padding-y);
+}
+
+.info-section--tinted {
+  background-color: var(--color-surface);
+}
+
+.info-section__container {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.info-section__container:has(.info-section__media) {
+  grid-template-columns: 1.1fr 1fr;
+}
+
+/* Sin imagen: el texto se centra y se limita el ancho para mejor lectura */
+.info-section__container:not(:has(.info-section__media)) .info-section__text {
+  max-width: 65ch;
+  margin-inline: auto;
+}
+
+.info-section--reverse .info-section__media {
+  order: -1;
+}
+
+.info-section__title {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  margin-bottom: 1rem;
+}
+
+.info-section__paragraph {
+  color: var(--color-text);
+  margin-bottom: 0.85rem;
+}
+
+.info-section__paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.info-section__media img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-surface);
+}
+
+@media (max-width: 860px) {
+  .info-section__container:has(.info-section__media) {
+    grid-template-columns: 1fr;
+  }
+
+  /* En móvil, el texto siempre va antes que la imagen */
+  .info-section--reverse .info-section__media {
+    order: 0;
+  }
+}

@@ -6,7 +6,8 @@ import { Footer } from '../../components/footer/footer';
 
 @Component({
   selector: 'app-home',
+  imports: [Navbar, Hero, InfoSection, Footer],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {}
+export class Home { }
