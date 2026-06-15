@@ -17,14 +17,10 @@ export class Navbar {
 
   protected readonly navLinks: NavLink[] = [
     { label: 'Inicio', fragment: 'inicio' },
-    { label: 'Propiedad Intelectual', fragment: 'propiedad-intelectual' },
-    { label: 'Importancia', fragment: 'importancia-emprendedores' },
-    { label: 'Tipos de Protección', fragment: 'tipos-proteccion' },
-    { label: 'Marco Nacional', fragment: 'marco-nacional' },
-    { label: 'Marco Internacional', fragment: 'marco-internacional' },
+    { label: 'Protección', fragment: 'tipos-proteccion' },
+    { label: 'Costa Rica', fragment: 'marco-nacional' },
+    { label: 'Internacional', fragment: 'marco-internacional' },
     { label: 'Caso Práctico', fragment: 'caso-practico' },
-    { label: 'Emprendimiento', fragment: 'emprendimiento' },
-    { label: 'SVG Interactivo', fragment: 'svg-interactivo' },
     { label: 'Conclusiones', fragment: 'conclusiones' },
   ];
 

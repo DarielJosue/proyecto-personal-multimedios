@@ -1,0 +1,61 @@
+<!--
+  ============================================================
+  DIAGRAMA SVG — Árbol de los tipos de protección
+  ------------------------------------------------------------
+  Para sustituirlo por uno hecho por ti, reemplaza este bloque
+  <svg>…</svg> completo. Mantén en cada "hoja":
+    · class="ptree__leaf"  (estilos + hover/focus)
+    · data-id="…"          (lo usará la interacción del Día 4)
+    · tabindex / aria-label (accesibilidad por teclado)
+  ============================================================
+-->
+<svg
+  class="ptree"
+  viewBox="0 0 640 430"
+  role="img"
+  aria-labelledby="ptree-title ptree-desc"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title id="ptree-title">Tipos de protección de la propiedad intelectual</title>
+  <desc id="ptree-desc">
+    Un árbol cuyo tronco se ramifica en tres tipos de protección: Derechos de
+    Autor, Marcas y Patentes.
+  </desc>
+
+  <!-- Raíces -->
+  <path class="ptree__trunk" d="M320,420 L286,400" />
+  <path class="ptree__trunk" d="M320,420 L354,400" />
+
+  <!-- Tronco -->
+  <path class="ptree__trunk" d="M320,420 L320,250" />
+
+  <!-- Ramas -->
+  <path class="ptree__branch" d="M320,250 C290,196 200,186 140,150" />
+  <path class="ptree__branch" d="M320,250 L320,92" />
+  <path class="ptree__branch" d="M320,250 C350,196 440,186 500,150" />
+
+  <!-- Hoja: Derechos de Autor -->
+  <g class="ptree__leaf" data-id="derechos-autor" tabindex="0" role="img" aria-label="Derechos de Autor">
+    <circle class="ptree__leaf-circle" cx="140" cy="140" r="66" />
+    <text class="ptree__leaf-label" text-anchor="middle">
+      <tspan x="140" y="133">Derechos</tspan>
+      <tspan x="140" y="158">de Autor</tspan>
+    </text>
+  </g>
+
+  <!-- Hoja: Marcas -->
+  <g class="ptree__leaf" data-id="marcas" tabindex="0" role="img" aria-label="Marcas">
+    <circle class="ptree__leaf-circle" cx="320" cy="92" r="66" />
+    <text class="ptree__leaf-label" text-anchor="middle">
+      <tspan x="320" y="99">Marcas</tspan>
+    </text>
+  </g>
+
+  <!-- Hoja: Patentes -->
+  <g class="ptree__leaf" data-id="patentes" tabindex="0" role="img" aria-label="Patentes">
+    <circle class="ptree__leaf-circle" cx="500" cy="140" r="66" />
+    <text class="ptree__leaf-label" text-anchor="middle">
+      <tspan x="500" y="147">Patentes</tspan>
+    </text>
+  </g>
+</svg>

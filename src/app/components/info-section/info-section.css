@@ -1,33 +1,118 @@
+:host {
+  /* El host debe ser bloque para que las secciones queden pegadas y el
+     tronco del árbol se vea continuo entre una sección y la siguiente. */
+  display: block;
+}
+
 .info-section {
+  --section-bg: var(--color-page-bg);
+  position: relative;
+  background-color: var(--section-bg);
   padding-block: var(--section-padding-y);
 }
 
 .info-section--tinted {
-  background-color: var(--color-surface);
+  --section-bg: var(--color-surface);
 }
 
-.info-section__container {
+/* ============================================================
+   TRONCO: línea vertical continua en el centro (azul oscuro).
+   Va detrás del contenido (z-index 0) y recorre toda la altura
+   de la sección, así empalma con la sección vecina.
+   ============================================================ */
+.info-section::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+  width: 3px;
+  transform: translateX(-50%);
+  background-color: var(--color-tree);
+  border-radius: 3px;
+}
+
+/* Rejilla externa: [contenido izq] [carril del tronco] [contenido der]. */
+.info-section__inner {
+  position: relative;
+  z-index: 1;
   display: grid;
-  gap: 2.5rem;
-  align-items: center;
+  grid-template-columns: 1fr var(--tree-gutter) 1fr;
+  align-items: start;
 }
 
-.info-section__container:has(.info-section__media) {
-  grid-template-columns: 1.1fr 1fr;
+/* ============================================================
+   NODO + RAMA
+   ============================================================ */
+.info-section__spine {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  min-height: 3rem;
 }
 
-/* Sin imagen: el texto se centra y se limita el ancho para mejor lectura */
-.info-section__container:not(:has(.info-section__media)) .info-section__text {
-  max-width: 65ch;
-  margin-inline: auto;
+.info-section__node {
+  position: absolute;
+  left: 50%;
+  top: clamp(1.25rem, 3vw, 2.25rem);
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background-color: var(--color-tree);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  /* Halo del color del fondo: "corta" el tronco para que el número se lea limpio. */
+  box-shadow: 0 0 0 6px var(--section-bg);
 }
 
-.info-section--reverse .info-section__media {
-  order: -1;
+/* Rama: conector horizontal del nodo hacia la tarjeta.
+   Por defecto (paso impar) la tarjeta va a la IZQUIERDA → la rama va a la izquierda. */
+.info-section__node::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  width: calc(var(--tree-gutter) / 2);
+  height: 3px;
+  transform: translateY(-50%);
+  background-color: var(--color-tree);
+}
+
+/* Paso par: tarjeta a la DERECHA → la rama va a la derecha. */
+.info-section--right .info-section__node::after {
+  right: auto;
+  left: 100%;
+}
+
+/* ============================================================
+   TARJETA DE CONTENIDO
+   ============================================================ */
+.info-section__content {
+  grid-column: 1; /* izquierda por defecto */
+  grid-row: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  background-color: var(--color-page-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.info-section--right .info-section__content {
+  grid-column: 3; /* derecha en pasos pares */
 }
 
 .info-section__title {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: var(--fs-h2);
   margin-bottom: 1rem;
 }
 
@@ -40,19 +125,166 @@
   margin-bottom: 0;
 }
 
+/* Imagen real */
+.info-section__media {
+  margin: 0;
+}
+
 .info-section__media img {
   width: 100%;
   border-radius: var(--radius-md);
-  border: 1px solid var(--color-surface);
+  border: 1px solid var(--color-border);
 }
 
+/* Placeholder de imagen: reserva el espacio y muestra el texto alternativo. */
+.info-section__placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 12rem;
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--color-muted);
+  background-color: color-mix(in srgb, var(--color-primary) 4%, var(--color-surface));
+  border: 2px dashed color-mix(in srgb, var(--color-primary) 30%, transparent);
+  border-radius: var(--radius-md);
+}
+
+.info-section__placeholder--card {
+  min-height: 9rem;
+}
+
+.info-section__placeholder-label {
+  max-width: 30ch;
+  font-size: var(--fs-small);
+}
+
+.info-section__placeholder-label::before {
+  content: "🖼";
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+/* ============================================================
+   SECCIÓN ANCHA (tarjetas internas o diagrama SVG)
+   El nodo queda arriba-centro y la tarjeta ocupa todo el ancho debajo.
+   ============================================================ */
+.info-section--wide .info-section__inner {
+  grid-template-rows: auto auto;
+}
+
+.info-section--wide .info-section__spine {
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 3.25rem;
+}
+
+.info-section--wide .info-section__content {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+.info-section--wide .info-section__node::after {
+  display: none; /* en secciones anchas el tronco mismo conecta con la tarjeta */
+}
+
+/* Rejilla de tarjetas internas (tipos de protección) */
+.info-section__cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.info-section__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.info-section--tinted .info-section__card {
+  background-color: var(--color-page-bg);
+}
+
+.info-section__card-title {
+  font-size: var(--fs-h3);
+  text-align: center;
+}
+
+.info-section__card-text {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.info-section__card-img {
+  margin-top: auto;
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.info-section__card .info-section__placeholder {
+  margin-top: auto; /* empuja la imagen al fondo para alinear las tarjetas */
+}
+
+/* ============================================================
+   RESPONSIVE: en móvil el tronco vuelve a la izquierda y todo
+   el contenido se apila a su derecha en una sola columna.
+   ============================================================ */
 @media (max-width: 860px) {
-  .info-section__container:has(.info-section__media) {
-    grid-template-columns: 1fr;
+  .info-section {
+    --tree-gutter: 2.75rem;
   }
 
-  /* En móvil, el texto siempre va antes que la imagen */
-  .info-section--reverse .info-section__media {
-    order: 0;
+  .info-section__inner,
+  .info-section--wide .info-section__inner {
+    grid-template-columns: var(--tree-gutter) 1fr;
+    grid-template-rows: auto;
+    column-gap: 0.25rem;
+  }
+
+  .info-section::before {
+    left: calc(var(--section-padding-x) + var(--tree-gutter) / 2);
+  }
+
+  .info-section__spine,
+  .info-section--wide .info-section__spine {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .info-section__content,
+  .info-section--right .info-section__content,
+  .info-section--wide .info-section__content {
+    grid-column: 2;
+    grid-row: auto;
+  }
+
+  .info-section__node {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.9rem;
+  }
+
+  /* La rama siempre apunta a la derecha (la tarjeta está a la derecha). */
+  .info-section__node::after,
+  .info-section--right .info-section__node::after {
+    right: auto;
+    left: 100%;
+    display: block;
+  }
+
+  .info-section--wide .info-section__node::after {
+    display: none;
+  }
+
+  .info-section__cards {
+    grid-template-columns: 1fr;
   }
 }

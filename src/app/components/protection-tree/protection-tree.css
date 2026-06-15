@@ -1,0 +1,68 @@
+:host {
+  display: block;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.ptree {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  margin-inline: auto;
+}
+
+/* Tronco y raíces: trazo grueso en azul oscuro. */
+.ptree__trunk {
+  fill: none;
+  stroke: var(--color-tree);
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+/* Ramas: un poco más finas que el tronco. */
+.ptree__branch {
+  fill: none;
+  stroke: var(--color-tree);
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+/* Hoja (nodo): grupo interactivo. */
+.ptree__leaf {
+  cursor: pointer;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform var(--transition-base);
+}
+
+.ptree__leaf-circle {
+  fill: var(--color-primary);
+  stroke: var(--color-tree);
+  stroke-width: 3;
+  transition: fill var(--transition-base);
+}
+
+.ptree__leaf-label {
+  fill: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* Resaltado al pasar el cursor o enfocar con el teclado. */
+.ptree__leaf:hover,
+.ptree__leaf:focus-visible {
+  outline: none;
+  transform: scale(1.06);
+}
+
+.ptree__leaf:hover .ptree__leaf-circle,
+.ptree__leaf:focus-visible .ptree__leaf-circle {
+  fill: var(--color-accent);
+}
+
+.ptree__leaf:hover .ptree__leaf-label,
+.ptree__leaf:focus-visible .ptree__leaf-label {
+  fill: var(--color-text-strong);
+}

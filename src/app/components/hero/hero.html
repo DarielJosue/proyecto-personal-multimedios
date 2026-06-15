@@ -3,5 +3,16 @@
     <h1 class="hero__title">{{ title() }}</h1>
     <p class="hero__subtitle">{{ subtitle() }}</p>
     <a class="hero__cta" [href]="'#' + ctaFragment()">{{ ctaLabel() }}</a>
+
+    @if (highlights().length) {
+      <ul class="hero__cards">
+        @for (item of highlights(); track item.title) {
+          <li class="hero__card">
+            <h3 class="hero__card-title">{{ item.title }}</h3>
+            <p class="hero__card-text">{{ item.description }}</p>
+          </li>
+        }
+      </ul>
+    }
   </div>
 </section>

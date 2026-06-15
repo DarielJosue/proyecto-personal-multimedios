@@ -2,23 +2,67 @@
   [id]="sectionId()"
   class="info-section"
   [class.info-section--tinted]="tinted()"
-  [class.info-section--reverse]="reverse()"
+  [class.info-section--wide]="isWide()"
+  [class.info-section--right]="!isWide() && isRight()"
 >
-  <div class="info-section__container container">
-    <div class="info-section__text">
-      <h2 class="info-section__title">{{ title() }}</h2>
-
-      @for (paragraph of paragraphs(); track paragraph) {
-        <p class="info-section__paragraph">{{ paragraph }}</p>
-      }
-
-      <ng-content />
+  <div class="info-section__inner container">
+    <!--
+      Carril central del "árbol": tronco vertical + nodo numerado + rama hacia
+      la tarjeta. Es decorativo (aria-hidden): el lector de pantalla lee el
+      contenido, no el adorno.
+    -->
+    <div class="info-section__spine" aria-hidden="true">
+      <span class="info-section__node">{{ step() }}</span>
     </div>
 
-    @if (imageSrc(); as src) {
-      <div class="info-section__media">
-        <img [src]="src" [alt]="imageAlt()" loading="lazy" />
+    <div class="info-section__content">
+      <div class="info-section__text">
+        <h2 class="info-section__title">{{ title() }}</h2>
+
+        @for (paragraph of paragraphs(); track paragraph) {
+          <p class="info-section__paragraph">{{ paragraph }}</p>
+        }
+
+        <ng-content />
       </div>
-    }
+
+      @if (cards().length) {
+        <!-- Tarjetas internas en rejilla (p. ej. los tipos de protección). -->
+        <ul class="info-section__cards">
+          @for (card of cards(); track card.title) {
+            <li class="info-section__card">
+              <h3 class="info-section__card-title">{{ card.title }}</h3>
+              <p class="info-section__card-text">{{ card.text }}</p>
+
+              @if (card.imageSrc) {
+                <img
+                  class="info-section__card-img"
+                  [src]="card.imageSrc"
+                  [alt]="card.imageAlt ?? ''"
+                  loading="lazy"
+                />
+              } @else if (card.imageAlt) {
+                <div class="info-section__placeholder info-section__placeholder--card">
+                  <span class="info-section__placeholder-label">{{ card.imageAlt }}</span>
+                </div>
+              }
+            </li>
+          }
+        </ul>
+      } @else if (imageSrc()) {
+        <!-- Imagen real: se muestra cuando defines imageSrc en content.json. -->
+        <figure class="info-section__media">
+          <img [src]="imageSrc()" [alt]="imageAlt()" loading="lazy" />
+        </figure>
+      } @else if (imageAlt()) {
+        <!--
+          Placeholder: reserva el espacio de la imagen y muestra su texto
+          alternativo. En cuanto agregues imageSrc, aparecerá la imagen real.
+        -->
+        <div class="info-section__media info-section__placeholder">
+          <span class="info-section__placeholder-label">{{ imageAlt() }}</span>
+        </div>
+      }
+    </div>
   </div>
 </section>

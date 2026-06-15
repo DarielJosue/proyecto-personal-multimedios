@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .hero {
   display: flex;
   align-items: center;
@@ -6,7 +10,7 @@
   background: linear-gradient(
     135deg,
     var(--color-primary) 0%,
-    color-mix(in srgb, var(--color-primary) 70%, black) 100%
+    var(--color-tree) 100%
   );
   color: #ffffff;
   text-align: center;
@@ -18,25 +22,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .hero__title {
   color: #ffffff;
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: var(--fs-hero);
   max-width: 50rem;
 }
 
 .hero__subtitle {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  max-width: 40rem;
+  font-size: var(--fs-lead);
+  max-width: 42rem;
   color: rgb(255 255 255 / 88%);
 }
 
 .hero__cta {
   display: inline-block;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
   padding: 0.85rem 2rem;
+  border-radius: var(--radius-pill);
   background-color: var(--color-accent);
   color: var(--color-text-strong);
   font-weight: 700;
@@ -49,6 +54,59 @@
 .hero__cta:focus-visible {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgb(5 197 250 / 45%);
+}
+
+/* --- Tarjetas destacadas (pilares del tema) --- */
+.hero__cards {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  width: 100%;
+  max-width: 62rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.hero__card {
+  text-align: left;
+  padding: 1.15rem 1.25rem;
+  background-color: rgb(255 255 255 / 8%);
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-top: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  transition:
+    transform var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.hero__card:hover {
+  transform: translateY(-4px);
+  background-color: rgb(255 255 255 / 14%);
+}
+
+.hero__card-title {
+  color: #ffffff;
+  font-size: var(--fs-h3);
+  margin-bottom: 0.35rem;
+}
+
+.hero__card-text {
+  margin: 0;
+  font-size: var(--fs-small);
+  color: rgb(255 255 255 / 85%);
+}
+
+@media (max-width: 860px) {
+  .hero__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__cards {
+    grid-template-columns: 1fr;
+  }
 }
 
 @keyframes hero-fade-in {

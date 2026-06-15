@@ -7,18 +7,25 @@
       [subtitle]="content.hero.subtitle"
       [ctaLabel]="content.hero.ctaLabel"
       [ctaFragment]="content.hero.ctaFragment"
+      [highlights]="content.hero.highlights"
     />
 
     @for (section of content.sections; track section.sectionId) {
       <app-info-section
+        [step]="$index + 1"
         [sectionId]="section.sectionId"
         [title]="section.title"
         [paragraphs]="section.paragraphs"
         [tinted]="section.tinted ?? false"
-        [reverse]="section.reverse ?? false"
         [imageSrc]="section.imageSrc ?? null"
         [imageAlt]="section.imageAlt ?? ''"
-      />
+        [cards]="section.cards ?? []"
+        [wide]="section.wide ?? false"
+      >
+        @if (section.sectionId === 'svg-interactivo') {
+          <app-protection-tree />
+        }
+      </app-info-section>
     } @empty {
       <p class="home__status container">No hay secciones para mostrar.</p>
     }

@@ -1,5 +1,7 @@
 import { Component, input } from '@angular/core';
 
+import { HeroHighlight } from '../../models/content.model';
+
 @Component({
   selector: 'app-hero',
   imports: [],
@@ -13,4 +15,7 @@ export class Hero {
   );
   readonly ctaLabel = input('Explorar la infografía');
   readonly ctaFragment = input('propiedad-intelectual');
+
+  /** Tarjetas destacadas (pilares del tema) que vienen del JSON. */
+  readonly highlights = input<HeroHighlight[]>([]);
 }

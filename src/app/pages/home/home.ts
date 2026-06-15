@@ -4,12 +4,13 @@ import { AsyncPipe } from '@angular/common';
 import { Navbar } from '../../components/navbar/navbar';
 import { Hero } from '../../components/hero/hero';
 import { InfoSection } from '../../components/info-section/info-section';
+import { ProtectionTree } from '../../components/protection-tree/protection-tree';
 import { Footer } from '../../components/footer/footer';
 import { ContentService } from '../../services/content-service';
 
 @Component({
   selector: 'app-home',
-  imports: [AsyncPipe, Navbar, Hero, InfoSection, Footer],
+  imports: [AsyncPipe, Navbar, Hero, InfoSection, ProtectionTree, Footer],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
