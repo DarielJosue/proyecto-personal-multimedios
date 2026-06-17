@@ -1,6 +1,4 @@
 :host {
-  /* El host debe ser bloque para que las secciones queden pegadas y el
-     tronco del árbol se vea continuo entre una sección y la siguiente. */
   display: block;
 }
 
@@ -16,9 +14,7 @@
 }
 
 /* ============================================================
-   TRONCO: línea vertical continua en el centro (azul oscuro).
-   Va detrás del contenido (z-index 0) y recorre toda la altura
-   de la sección, así empalma con la sección vecina.
+   línea vertical continua en el centro (azul oscuro).
    ============================================================ */
 .info-section::before {
   content: "";
@@ -94,7 +90,7 @@
    TARJETA DE CONTENIDO
    ============================================================ */
 .info-section__content {
-  grid-column: 1; /* izquierda por defecto */
+  grid-column: 1; 
   grid-row: 1;
   min-width: 0;
   display: flex;
@@ -108,7 +104,7 @@
 }
 
 .info-section--right .info-section__content {
-  grid-column: 3; /* derecha en pasos pares */
+  grid-column: 3; 
 }
 
 .info-section__title {
@@ -125,6 +121,10 @@
   margin-bottom: 0;
 }
 
+.info-section__audio {
+  margin-top: 1rem;
+}
+
 /* Imagen real */
 .info-section__media {
   margin: 0;
@@ -136,7 +136,6 @@
   border: 1px solid var(--color-border);
 }
 
-/* Placeholder de imagen: reserva el espacio y muestra el texto alternativo. */
 .info-section__placeholder {
   display: grid;
   place-items: center;
@@ -185,10 +184,10 @@
 }
 
 .info-section--wide .info-section__node::after {
-  display: none; /* en secciones anchas el tronco mismo conecta con la tarjeta */
+  display: none; 
 }
 
-/* Rejilla de tarjetas internas (tipos de protección) */
+/* Rejilla de tarjetas internas */
 .info-section__cards {
   list-style: none;
   margin: 0;

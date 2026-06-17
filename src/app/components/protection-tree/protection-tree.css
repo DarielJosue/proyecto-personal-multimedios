@@ -12,7 +12,6 @@
   margin-inline: auto;
 }
 
-/* Tronco y raíces: trazo grueso en azul oscuro. */
 .ptree__trunk {
   fill: none;
   stroke: var(--color-tree);
@@ -20,7 +19,6 @@
   stroke-linecap: round;
 }
 
-/* Ramas: un poco más finas que el tronco. */
 .ptree__branch {
   fill: none;
   stroke: var(--color-tree);
@@ -28,7 +26,6 @@
   stroke-linecap: round;
 }
 
-/* Hoja (nodo): grupo interactivo. */
 .ptree__leaf {
   cursor: pointer;
   transform-box: fill-box;
@@ -49,8 +46,6 @@
   font-weight: 700;
   font-size: 20px;
 }
-
-/* Resaltado al pasar el cursor o enfocar con el teclado. */
 .ptree__leaf:hover,
 .ptree__leaf:focus-visible {
   outline: none;
@@ -64,5 +59,18 @@
 
 .ptree__leaf:hover .ptree__leaf-label,
 .ptree__leaf:focus-visible .ptree__leaf-label {
+  fill: var(--color-text-strong);
+}
+
+.ptree__leaf--active {
+  transform: scale(1.06);
+}
+
+.ptree__leaf--active .ptree__leaf-circle {
+  fill: var(--color-accent);
+  stroke-width: 6;
+}
+
+.ptree__leaf--active .ptree__leaf-label {
   fill: var(--color-text-strong);
 }

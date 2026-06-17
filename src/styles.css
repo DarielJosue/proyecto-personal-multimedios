@@ -75,7 +75,7 @@ h6 {
   margin-top: 0;
 }
 
-/* Jerarquía visual de encabezados (los componentes pueden ajustar lo suyo). */
+
 h1 {
   font-size: var(--fs-hero);
 }
@@ -129,4 +129,20 @@ button {
   max-width: var(--max-content-width);
   margin-inline: auto;
   padding-inline: var(--section-padding-x);
+}
+
+/*
+   APARICIÓN PROGRESIVA AL HACER SCROLL
+   */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: none;
 }

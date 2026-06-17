@@ -1,0 +1,19 @@
+<div class="diagram">
+  <app-protection-tree [activeId]="selectedId()" (select)="onSelect($event)" />
+
+ 
+  <div class="diagram__panel" aria-live="polite">
+    @if (selectedNode(); as node) {
+      <article class="diagram__card" [@slideIn]="node.id">
+        <h3 class="diagram__card-title">{{ node.label }}</h3>
+        <p class="diagram__card-text">{{ node.description }}</p>
+
+        @if (node.audioSrc) {
+          <app-audio-player [src]="node.audioSrc" [title]="node.audioTitle ?? node.label" />
+        }
+      </article>
+    } @else {
+      <p class="diagram__hint" [@fadeIn]>{{ diagram().intro }}</p>
+    }
+  </div>
+</div>

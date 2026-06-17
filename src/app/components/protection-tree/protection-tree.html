@@ -1,25 +1,15 @@
-<!--
-  ============================================================
-  DIAGRAMA SVG — Árbol de los tipos de protección
-  ------------------------------------------------------------
-  Para sustituirlo por uno hecho por ti, reemplaza este bloque
-  <svg>…</svg> completo. Mantén en cada "hoja":
-    · class="ptree__leaf"  (estilos + hover/focus)
-    · data-id="…"          (lo usará la interacción del Día 4)
-    · tabindex / aria-label (accesibilidad por teclado)
-  ============================================================
--->
+
 <svg
   class="ptree"
   viewBox="0 0 640 430"
-  role="img"
+  role="group"
   aria-labelledby="ptree-title ptree-desc"
   xmlns="http://www.w3.org/2000/svg"
 >
   <title id="ptree-title">Tipos de protección de la propiedad intelectual</title>
   <desc id="ptree-desc">
-    Un árbol cuyo tronco se ramifica en tres tipos de protección: Derechos de
-    Autor, Marcas y Patentes.
+    Árbol cuyo tronco se ramifica en tres tipos de protección: Derechos de
+    Autor, Marcas y Patentes. Selecciona una rama para ver su detalle.
   </desc>
 
   <!-- Raíces -->
@@ -35,7 +25,18 @@
   <path class="ptree__branch" d="M320,250 C350,196 440,186 500,150" />
 
   <!-- Hoja: Derechos de Autor -->
-  <g class="ptree__leaf" data-id="derechos-autor" tabindex="0" role="img" aria-label="Derechos de Autor">
+  <g
+    class="ptree__leaf"
+    [class.ptree__leaf--active]="activeId() === 'derechos-autor'"
+    data-id="derechos-autor"
+    role="button"
+    tabindex="0"
+    aria-label="Derechos de Autor"
+    [attr.aria-pressed]="activeId() === 'derechos-autor'"
+    (click)="choose('derechos-autor')"
+    (keydown.enter)="choose('derechos-autor')"
+    (keydown.space)="choose('derechos-autor'); $event.preventDefault()"
+  >
     <circle class="ptree__leaf-circle" cx="140" cy="140" r="66" />
     <text class="ptree__leaf-label" text-anchor="middle">
       <tspan x="140" y="133">Derechos</tspan>
@@ -44,7 +45,18 @@
   </g>
 
   <!-- Hoja: Marcas -->
-  <g class="ptree__leaf" data-id="marcas" tabindex="0" role="img" aria-label="Marcas">
+  <g
+    class="ptree__leaf"
+    [class.ptree__leaf--active]="activeId() === 'marcas'"
+    data-id="marcas"
+    role="button"
+    tabindex="0"
+    aria-label="Marcas"
+    [attr.aria-pressed]="activeId() === 'marcas'"
+    (click)="choose('marcas')"
+    (keydown.enter)="choose('marcas')"
+    (keydown.space)="choose('marcas'); $event.preventDefault()"
+  >
     <circle class="ptree__leaf-circle" cx="320" cy="92" r="66" />
     <text class="ptree__leaf-label" text-anchor="middle">
       <tspan x="320" y="99">Marcas</tspan>
@@ -52,7 +64,18 @@
   </g>
 
   <!-- Hoja: Patentes -->
-  <g class="ptree__leaf" data-id="patentes" tabindex="0" role="img" aria-label="Patentes">
+  <g
+    class="ptree__leaf"
+    [class.ptree__leaf--active]="activeId() === 'patentes'"
+    data-id="patentes"
+    role="button"
+    tabindex="0"
+    aria-label="Patentes"
+    [attr.aria-pressed]="activeId() === 'patentes'"
+    (click)="choose('patentes')"
+    (keydown.enter)="choose('patentes')"
+    (keydown.space)="choose('patentes'); $event.preventDefault()"
+  >
     <circle class="ptree__leaf-circle" cx="500" cy="140" r="66" />
     <text class="ptree__leaf-label" text-anchor="middle">
       <tspan x="500" y="147">Patentes</tspan>

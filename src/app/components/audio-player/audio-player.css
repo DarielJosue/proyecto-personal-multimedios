@@ -1,0 +1,45 @@
+:host {
+  display: inline-flex;
+}
+
+.audio {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.audio__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: var(--fs-small);
+  cursor: pointer;
+  /* scaleOnHover: el "agrandar al pasar el cursor" se hace con CSS,
+     porque depende del hover, no de un cambio de estado de Angular. */
+  transition:
+    transform var(--transition-base),
+    background-color var(--transition-base);
+}
+
+.audio__btn:hover,
+.audio__btn:focus-visible {
+  background-color: var(--color-tree);
+  transform: scale(1.05);
+}
+
+.audio__icon {
+  font-size: 0.8em;
+  line-height: 1;
+}
+
+.audio__hint {
+  font-size: var(--fs-small);
+  color: var(--color-muted);
+  font-style: italic;
+}

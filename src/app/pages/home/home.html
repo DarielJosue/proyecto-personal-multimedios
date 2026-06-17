@@ -1,36 +1,50 @@
 <app-navbar />
 
-@if (content$ | async; as content) {
-  <main>
-    <app-hero
-      [title]="content.hero.title"
-      [subtitle]="content.hero.subtitle"
-      [ctaLabel]="content.hero.ctaLabel"
-      [ctaFragment]="content.hero.ctaFragment"
-      [highlights]="content.hero.highlights"
-    />
+@if (state$ | async; as state) {
+  @if (state.content; as content) {
+    <main>
+      <app-hero
+        [title]="content.hero.title"
+        [subtitle]="content.hero.subtitle"
+        [ctaLabel]="content.hero.ctaLabel"
+        [ctaFragment]="content.hero.ctaFragment"
+        [highlights]="content.hero.highlights"
+      />
 
-    @for (section of content.sections; track section.sectionId) {
-      <app-info-section
-        [step]="$index + 1"
-        [sectionId]="section.sectionId"
-        [title]="section.title"
-        [paragraphs]="section.paragraphs"
-        [tinted]="section.tinted ?? false"
-        [imageSrc]="section.imageSrc ?? null"
-        [imageAlt]="section.imageAlt ?? ''"
-        [cards]="section.cards ?? []"
-        [wide]="section.wide ?? false"
-      >
-        @if (section.sectionId === 'svg-interactivo') {
-          <app-protection-tree />
-        }
-      </app-info-section>
-    } @empty {
-      <p class="home__status container">No hay secciones para mostrar.</p>
-    }
-  </main>
+      @for (section of content.sections; track section.sectionId) {
+        <app-info-section
+          appReveal
+          [step]="$index + 1"
+          [sectionId]="section.sectionId"
+          [title]="section.title"
+          [paragraphs]="section.paragraphs"
+          [tinted]="section.tinted ?? false"
+          [imageSrc]="section.imageSrc ?? null"
+          [imageAlt]="section.imageAlt ?? ''"
+          [audioSrc]="section.audioSrc ?? null"
+          [audioTitle]="section.audioTitle ?? ''"
+          [cards]="section.cards ?? []"
+          [wide]="section.wide ?? false"
+        >
+          <!-- Diagrama interactivo: solo se proyecta en la sección del SVG. -->
+          @if (section.sectionId === 'svg-interactivo') {
+            <app-interactive-diagram [diagram]="content.diagram" />
+          }
+        </app-info-section>
+      } @empty {
+        <p class="home__status container">No hay secciones para mostrar.</p>
+      }
+    </main>
+  } @else {
+    <!-- state.content es null → la carga del JSON falló. -->
+    <main>
+      <p class="home__status home__status--error container">
+        No se pudo cargar el contenido. Revisa tu conexión e inténtalo de nuevo.
+      </p>
+    </main>
+  }
 } @else {
+  <!-- Aún no llega la primera emisión: estado de carga. -->
   <main>
     <p class="home__status container">Cargando contenido…</p>
   </main>

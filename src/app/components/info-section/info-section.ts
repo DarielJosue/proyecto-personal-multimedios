@@ -1,10 +1,11 @@
 import { Component, computed, input } from '@angular/core';
 
 import { SectionCard } from '../../models/content.model';
+import { AudioPlayer } from '../audio-player/audio-player';
 
 @Component({
   selector: 'app-info-section',
-  imports: [],
+  imports: [AudioPlayer],
   templateUrl: './info-section.html',
   styleUrl: './info-section.css',
 })
@@ -17,6 +18,10 @@ export class InfoSection {
 
   readonly imageSrc = input<string | null>(null);
   readonly imageAlt = input('');
+
+  /** Narración opcional de la sección (botón "Escuchar"). */
+  readonly audioSrc = input<string | null>(null);
+  readonly audioTitle = input('');
 
   /** Tarjetas internas (p. ej. los tipos de protección). */
   readonly cards = input<SectionCard[]>([]);

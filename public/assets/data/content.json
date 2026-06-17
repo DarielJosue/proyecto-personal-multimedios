@@ -30,6 +30,8 @@
       "tinted": false,
       "imageSrc": "",
       "imageAlt": "Ilustración de las tres categorías de propiedad intelectual: derechos de autor, marcas y propiedad industrial.",
+      "audioSrc": "assets/audio/introduccion.mp3",
+      "audioTitle": "Introducción",
       "paragraphs": [
         "La propiedad intelectual (PI) es el conjunto de derechos legales que protegen las creaciones de la mente: obras artísticas y literarias, marcas, diseños, invenciones e incluso secretos comerciales.",
         "En Costa Rica, la PI se organiza principalmente en tres grandes categorías: derechos de autor, signos distintivos (marcas) y propiedad industrial (patentes y diseños), cada una con su propio marco legal y proceso de registro."
@@ -78,6 +80,8 @@
       "tinted": true,
       "imageSrc": "",
       "imageAlt": "Leyes costarricenses de propiedad intelectual y el escudo del Registro Nacional.",
+      "audioSrc": "assets/audio/costa-rica.mp3",
+      "audioTitle": "Marco nacional",
       "paragraphs": [
         "La protección de la propiedad intelectual en Costa Rica está regulada principalmente por la Ley de Marcas y Otros Signos Distintivos (N.º 7978), la Ley de Patentes de Invención (N.º 6867) y la Ley de Derechos de Autor y Derechos Conexos (N.º 6683).",
         "El Registro Nacional, a través del Registro de la Propiedad Industrial y el Registro de Derechos de Autor, es la institución encargada de inscribir y resguardar estos derechos en el país."
@@ -89,6 +93,8 @@
       "tinted": false,
       "imageSrc": "",
       "imageAlt": "Mapa con los países miembros de los convenios internacionales coordinados por la OMPI.",
+      "audioSrc": "assets/audio/internacional.mp3",
+      "audioTitle": "Marco internacional",
       "paragraphs": [
         "A nivel internacional, la Organización Mundial de la Propiedad Intelectual (OMPI) coordina los principales tratados que Costa Rica ha firmado, como el Convenio de París (propiedad industrial) y el Convenio de Berna (derechos de autor).",
         "Gracias al derecho de prioridad del Convenio de París, una persona emprendedora que registra su marca o solicita su patente en Costa Rica tiene hasta seis meses (marcas) o doce meses (patentes) para presentar esa misma solicitud en otros países miembros, conservando la fecha de su trámite original. Además, Costa Rica analiza actualmente su adhesión al Protocolo de Madrid, un sistema que en el futuro permitiría solicitar el registro de una marca en múltiples países mediante un único trámite internacional."
@@ -100,6 +106,8 @@
       "tinted": true,
       "imageSrc": "",
       "imageAlt": "Piezas de cerámica chorotega elaboradas por artesanos de Guaitil, Guanacaste.",
+      "audioSrc": "assets/audio/caso-practico.mp3",
+      "audioTitle": "Caso práctico",
       "paragraphs": [
         "Los artesanos de Guaitil y San Vicente, en los cantones de Santa Cruz y Nicoya, lograron que la cerámica chorotega obtuviera ante el Registro de la Propiedad Industrial una Denominación de Origen: la primera y única reconocida por la OMPI para un producto artesanal en toda Centroamérica.",
         "El proceso, liderado por la cooperativa Coopesanguai, tomó cinco años de documentación sobre la historia, las técnicas y los materiales propios de la zona. La motivación principal fue evitar que se vendiera como 'cerámica de Guaitil' piezas fabricadas en otros lugares, un ejemplo de cómo una comunidad emprendedora puede convertir su identidad cultural en un activo legalmente protegido."
@@ -135,5 +143,32 @@
         "Conocer las leyes nacionales y los convenios internacionales permite tomar decisiones informadas desde las primeras etapas de un proyecto, evitando conflictos legales y maximizando el valor del negocio."
       ]
     }
-  ]
+  ],
+  "diagram": {
+    "rootLabel": "Propiedad Intelectual",
+    "intro": "Selecciona una rama del árbol para ver su descripción y escuchar la narración.",
+    "nodes": [
+      {
+        "id": "derechos-autor",
+        "label": "Derechos de Autor",
+        "description": "Protegen las obras artísticas, literarias y el software desde el momento de su creación, sin necesidad de registro previo. En Costa Rica los regula la Ley de Derechos de Autor y Derechos Conexos (N.º 6683).",
+        "audioSrc": "assets/audio/derechos-autor.mp3",
+        "audioTitle": "Derechos de Autor"
+      },
+      {
+        "id": "marcas",
+        "label": "Marcas",
+        "description": "Protegen los signos que distinguen productos y servicios en el mercado. Se inscriben en el Registro de la Propiedad Industrial y se rigen por la Ley de Marcas y Otros Signos Distintivos (N.º 7978).",
+        "audioSrc": "assets/audio/marcas.mp3",
+        "audioTitle": "Marcas"
+      },
+      {
+        "id": "patentes",
+        "label": "Patentes",
+        "description": "Protegen invenciones técnicas nuevas con aplicación industrial, otorgando derechos exclusivos por un tiempo limitado. Las regula la Ley de Patentes de Invención (N.º 6867).",
+        "audioSrc": "assets/audio/patentes.mp3",
+        "audioTitle": "Patentes"
+      }
+    ]
+  }
 }

@@ -6,11 +6,7 @@
   [class.info-section--right]="!isWide() && isRight()"
 >
   <div class="info-section__inner container">
-    <!--
-      Carril central del "árbol": tronco vertical + nodo numerado + rama hacia
-      la tarjeta. Es decorativo (aria-hidden): el lector de pantalla lee el
-      contenido, no el adorno.
-    -->
+
     <div class="info-section__spine" aria-hidden="true">
       <span class="info-section__node">{{ step() }}</span>
     </div>
@@ -23,11 +19,14 @@
           <p class="info-section__paragraph">{{ paragraph }}</p>
         }
 
+        @if (audioSrc(); as src) {
+          <app-audio-player class="info-section__audio" [src]="src" [title]="audioTitle()" />
+        }
+
         <ng-content />
       </div>
 
       @if (cards().length) {
-        <!-- Tarjetas internas en rejilla (p. ej. los tipos de protección). -->
         <ul class="info-section__cards">
           @for (card of cards(); track card.title) {
             <li class="info-section__card">
@@ -50,15 +49,10 @@
           }
         </ul>
       } @else if (imageSrc()) {
-        <!-- Imagen real: se muestra cuando defines imageSrc en content.json. -->
         <figure class="info-section__media">
           <img [src]="imageSrc()" [alt]="imageAlt()" loading="lazy" />
         </figure>
       } @else if (imageAlt()) {
-        <!--
-          Placeholder: reserva el espacio de la imagen y muestra su texto
-          alternativo. En cuanto agregues imageSrc, aparecerá la imagen real.
-        -->
         <div class="info-section__media info-section__placeholder">
           <span class="info-section__placeholder-label">{{ imageAlt() }}</span>
         </div>

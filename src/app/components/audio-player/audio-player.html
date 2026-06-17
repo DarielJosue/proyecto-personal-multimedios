@@ -1,0 +1,30 @@
+<div class="audio">
+  <button
+    type="button"
+    class="audio__btn"
+    (click)="toggle()"
+    [attr.aria-pressed]="playing()"
+    [attr.aria-label]="(playing() ? 'Pausar' : 'Reproducir') + ' narración' + (title() ? ': ' + title() : '')"
+  >
+    <span class="audio__icon" aria-hidden="true">{{ playing() ? '❚❚' : '▶' }}</span>
+    <span class="audio__label">{{ playing() ? 'Pausar' : 'Escuchar' }}{{ title() ? ' · ' + title() : '' }}</span>
+  </button>
+
+  @if (unavailable()) {
+    <span class="audio__hint" role="status">Audio pendiente</span>
+  }
+
+  <!--
+    preload="none": no descarga el audio hasta que se pulsa Reproducir.
+    El binding de eventos mantiene `playing` sincronizado con el <audio> real.
+  -->
+  <audio
+    #audio
+    [src]="src()"
+    preload="none"
+    (play)="playing.set(true)"
+    (pause)="playing.set(false)"
+    (ended)="playing.set(false)"
+    (error)="unavailable.set(true)"
+  ></audio>
+</div>
