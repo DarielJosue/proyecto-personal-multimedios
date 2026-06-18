@@ -20,6 +20,14 @@ Proveer una guía visual y accesible para personas emprendedoras en Costa Rica s
 - Node.js (recomendado v16+ / v18+)
 - npm (v8+ / la versión incluida con su instalación de Node)
 
+## Clonar el repositorio
+
+Clona el repositorio con el siguiente comando (reemplaza la URL por la del repositorio real):
+
+```bash
+git clone https://github.com/DarielJosue/proyecto-personal-multimedios.git
+```
+
 ## Instalación de dependencias
 
 ```bash
@@ -66,5 +74,25 @@ La documentación de apoyo, créditos y referencias se encuentra en:
 ## Créditos
 
 Las imágenes y recursos multimedia utilizados están referenciados en `docs/referencias.md`
+
+## Capturas del proyecto
+
+Galería de pantallas del proyecto en PC y movil:
+
+![Captura 1](public/assets/captures/Captura%20de%20pantalla%201.png)
+
+![Captura 2](public/assets/captures/Captura%20de%20pantalla%202.png)
+
+![Captura 3](public/assets/captures/Captura%20de%20pantalla%203.png)
+
+![Captura 4](public/assets/captures/Captura%20de%20pantalla%204.png)
+
+![Captura 5](public/assets/captures/Captura%20de%20pantalla%205.png)
+
+![Captura 6](public/assets/captures/Captura%20de%20pantalla%206.png)
+
+![Captura 7](public/assets/captures/Captura%20de%20pantalla%207.png)
+
+![Captura 8](public/assets/captures/Captura%20de%20pantalla%208.png)
 
 
