@@ -28,6 +28,8 @@ export interface SectionCard {
     author?: string;
     source?: string;
   };
+  /** UI-only flag set at runtime when an image fails to load. Not persisted in JSON. */
+  _imageFailed?: boolean;
 }
 
 export interface SectionContent {

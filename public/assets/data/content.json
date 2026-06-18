@@ -28,7 +28,7 @@
       "sectionId": "propiedad-intelectual",
       "title": "¿Qué es la Propiedad Intelectual?",
       "tinted": false,
-      "imageSrc": "",
+      "imageSrc": "assets/images/pexels-ekaterina-bolovtsova-6192324.avif",
       "imageAlt": "Ilustración de las tres categorías de propiedad intelectual: derechos de autor, marcas y propiedad industrial.",
       "audioSrc": "assets/audio/que_es_la_propiedad_intelectual.mp3",
       "audioTitle": "Introducción",
@@ -57,11 +57,11 @@
         {
           "title": "Derechos de autor",
           "text": "Protegen obras artísticas, literarias y el software desde el momento de su creación, sin necesidad de registro previo.",
-          "imageSrc": "assets/images/derechos_autor.avif",
+          "imageSrc": "assets/images/derechos_autor.jpg",
           "imageAlt": "Libro, pincel y código que representan obras protegidas por derechos de autor.",
-          "imageCredits": {
-            "author": "Ann H",
-            "source": "https://www.pexels.com/es-es/foto/de-madera-cartas-letras-mensaje-6555663/"
+           "imageCredits": {
+            "author": "Caterina  Del Sol",
+            "source": "https://www.pexels.com/es-es/foto/vintage-de-madera-clasico-antiguo-7635504/"
           }
         },
         {

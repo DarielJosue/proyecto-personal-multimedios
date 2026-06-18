@@ -40,4 +40,44 @@ export class InfoSection {
 
   /** Lado de la rama: pasos pares a la derecha, impares a la izquierda. */
   protected readonly isRight = computed(() => ((this.step() ?? 1) % 2) === 0);
+
+  /** Estado local para imágenes que fallan al cargar. */
+  protected _mainImageFailed = false;
+
+  onMainImgError() {
+    this._mainImageFailed = true;
+  }
+
+  onCardImgError(card: SectionCard) {
+    // Marca la tarjeta para mostrar el placeholder en lugar de la imagen rota.
+    card._imageFailed = true;
+  }
+
+  /** Parallax / tilt handlers for pointer movement */
+  onCardPointerMove(event: PointerEvent) {
+    const el = event.currentTarget as HTMLElement | null;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5; // -0.5..0.5
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    const rotateX = (y * 6).toFixed(2);
+    const rotateY = (-x * 6).toFixed(2);
+    const translateX = (-x * 6).toFixed(2);
+    const translateY = (-y * 6).toFixed(2);
+    const img = el.querySelector('img') as HTMLElement | null;
+    if (img) {
+      img.style.transform = `perspective(800px) translate3d(${translateX}px, ${translateY}px, 0px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+      el.setAttribute('data-tilt', '1');
+    }
+  }
+
+  onCardPointerLeave(event: PointerEvent) {
+    const el = event.currentTarget as HTMLElement | null;
+    if (!el) return;
+    const img = el.querySelector('img') as HTMLElement | null;
+    if (img) {
+      img.style.transform = '';
+      el.removeAttribute('data-tilt');
+    }
+  }
 }

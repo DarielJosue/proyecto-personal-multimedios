@@ -151,6 +151,32 @@
   border: 1px solid var(--color-border);
 }
 
+/* Hover / subtle parallax effect for images */
+.info-section__card-figure,
+.info-section__media {
+  perspective: 800px;
+}
+
+.info-section__card-figure img,
+.info-section__media img {
+  transition: transform 300ms cubic-bezier(.2,.9,.2,1), box-shadow 300ms ease;
+  transform-origin: center center;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.info-section__card-figure:hover img,
+.info-section__media:hover img {
+  transform: translateY(-6px) scale(1.02) rotateZ(-0.5deg);
+  box-shadow: 0 12px 30px rgba(16,24,40,0.12);
+}
+
+/* Slightly larger effect on pointer movement for subtle 3D feel */
+.info-section__card-figure[data-tilt],
+.info-section__media[data-tilt] {
+  /* the actual transform is applied inline by the component handlers */
+}
+
 .info-section__placeholder {
   display: grid;
   place-items: center;
