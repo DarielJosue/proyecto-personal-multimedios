@@ -168,10 +168,10 @@ export class Background3d {
       return;
     }
 
-    const clock = new THREE.Clock();
+    const clock = new THREE.Timer();
     const tick = () => {
       this.frameId = requestAnimationFrame(tick);
-      const t = clock.getElapsedTime();
+      const t = clock.getElapsed();
       const hover = pointerInside ? pick() : -1;
       for (let i = 0; i < items.length; i++) {
         const it = items[i];
