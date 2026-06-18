@@ -1,4 +1,8 @@
 <div class="audio">
+  @if (playing()) {
+    <span class="audio__wave" aria-hidden="true"></span>
+  }
+
   <button
     type="button"
     class="audio__btn"
@@ -14,10 +18,6 @@
     <span class="audio__hint" role="status">Audio pendiente</span>
   }
 
-  <!--
-    preload="none": no descarga el audio hasta que se pulsa Reproducir.
-    El binding de eventos mantiene `playing` sincronizado con el <audio> real.
-  -->
   <audio
     #audio
     [src]="src()"

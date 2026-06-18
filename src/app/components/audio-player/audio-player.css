@@ -3,12 +3,15 @@
 }
 
 .audio {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
 }
 
 .audio__btn {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -20,8 +23,6 @@
   font-weight: 600;
   font-size: var(--fs-small);
   cursor: pointer;
-  /* scaleOnHover: el "agrandar al pasar el cursor" se hace con CSS,
-     porque depende del hover, no de un cambio de estado de Angular. */
   transition:
     transform var(--transition-base),
     background-color var(--transition-base);
@@ -42,4 +43,46 @@
   font-size: var(--fs-small);
   color: var(--color-muted);
   font-style: italic;
+}
+
+.audio__wave {
+  position: absolute;
+  z-index: 0;
+  left: -0.4rem;
+  right: -0.4rem;
+  top: calc(100% - 0.7rem);
+  height: 1.8rem;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: 0 0 var(--radius-pill) var(--radius-pill);
+  -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent);
+  mask-image: linear-gradient(to bottom, #000 30%, transparent);
+}
+
+.audio__wave::before,
+.audio__wave::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat-x;
+  background-position: 0 bottom;
+  background-size: 120px 100%;
+}
+
+.audio__wave::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40' viewBox='0 0 120 40'%3E%3Cpath d='M0 16 Q30 2 60 16 T120 16 V40 H0 Z' fill='%2305c5fa'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  animation: audio-wave 1.9s linear infinite;
+}
+
+.audio__wave::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40' viewBox='0 0 120 40'%3E%3Cpath d='M0 24 Q30 12 60 24 T120 24 V40 H0 Z' fill='%239fd8ff'/%3E%3C/svg%3E");
+  opacity: 0.35;
+  animation: audio-wave 1.2s linear infinite reverse;
+}
+
+@keyframes audio-wave {
+  to {
+    background-position-x: 120px;
+  }
 }
