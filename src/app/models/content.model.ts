@@ -24,6 +24,10 @@ export interface SectionCard {
   text: string;
   imageSrc?: string | null;
   imageAlt?: string;
+  imageCredits?: {
+    author?: string;
+    source?: string;
+  };
 }
 
 export interface SectionContent {
@@ -34,6 +38,10 @@ export interface SectionContent {
   tinted?: boolean;
   imageSrc?: string | null;
   imageAlt?: string;
+  imageCredits?: {
+    author?: string;
+    source?: string;
+  };
 
   audioSrc?: string;
   audioTitle?: string;

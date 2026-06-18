@@ -18,6 +18,7 @@ export class InfoSection {
 
   readonly imageSrc = input<string | null>(null);
   readonly imageAlt = input('');
+  readonly imageCredits = input<{ author?: string; source?: string } | null>(null);
 
   /** Narración opcional de la sección (botón "Escuchar"). */
   readonly audioSrc = input<string | null>(null);

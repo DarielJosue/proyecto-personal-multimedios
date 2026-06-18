@@ -34,12 +34,20 @@
               <p class="info-section__card-text">{{ card.text }}</p>
 
               @if (card.imageSrc) {
-                <img
-                  class="info-section__card-img"
-                  [src]="card.imageSrc"
-                  [alt]="card.imageAlt ?? ''"
-                  loading="lazy"
-                />
+                <figure class="info-section__card-figure">
+                  <img
+                    class="info-section__card-img"
+                    [src]="card.imageSrc"
+                    [alt]="card.imageAlt ?? ''"
+                    loading="lazy"
+                  />
+                  @if (card.imageCredits) {
+                    <figcaption class="info-section__credit">
+                      @if (card.imageCredits.author) {<span class="info-section__credit-author">{{ card.imageCredits.author }}</span>}
+                      @if (card.imageCredits.source) {<span class="info-section__credit-source"> — <a href="{{ card.imageCredits.source }}" target="_blank" rel="noopener">fuente</a></span>}
+                    </figcaption>
+                  }
+                </figure>
               } @else if (card.imageAlt) {
                 <div class="info-section__placeholder info-section__placeholder--card">
                   <span class="info-section__placeholder-label">{{ card.imageAlt }}</span>
@@ -51,6 +59,12 @@
       } @else if (imageSrc()) {
         <figure class="info-section__media">
           <img [src]="imageSrc()" [alt]="imageAlt()" loading="lazy" />
+          @if (imageCredits(); as credits) {
+            <figcaption class="info-section__credit">
+              @if (credits.author) {<span class="info-section__credit-author">{{ credits.author }}</span>}
+              @if (credits.source) {<span class="info-section__credit-source"> — <a href="{{ credits.source }}" target="_blank" rel="noopener">fuente</a></span>}
+            </figcaption>
+          }
         </figure>
       } @else if (imageAlt()) {
         <div class="info-section__media info-section__placeholder">
