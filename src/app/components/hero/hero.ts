@@ -1,10 +1,11 @@
 import { Component, input } from '@angular/core';
 
 import { HeroHighlight } from '../../models/content.model';
+import { Background3d } from '../background-3d/background-3d';
 
 @Component({
   selector: 'app-hero',
-  imports: [],
+  imports: [Background3d],
   templateUrl: './hero.html',
   styleUrl: './hero.css',
 })
