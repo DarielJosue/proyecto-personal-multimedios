@@ -33,7 +33,11 @@
               <p class="info-section__card-text">{{ card.text }}</p>
 
               @if (card.imageSrc && !card._imageFailed) {
-                <figure class="info-section__card-figure" (pointermove)="onCardPointerMove($event)" (pointerleave)="onCardPointerLeave($event)">
+                <figure
+                  class="info-section__card-figure"
+                  (pointermove)="onCardPointerMove($event)"
+                  (pointerleave)="onCardPointerLeave($event)"
+                >
                   <img
                     class="info-section__card-img"
                     [src]="card.imageSrc"
@@ -69,7 +73,11 @@
         </ul>
       } @else if (imageSrc()) {
         @if (!_mainImageFailed) {
-          <figure class="info-section__media" (pointermove)="onCardPointerMove($event)" (pointerleave)="onCardPointerLeave($event)">
+          <figure
+            class="info-section__media"
+            (pointermove)="onCardPointerMove($event)"
+            (pointerleave)="onCardPointerLeave($event)"
+          >
             <img [src]="imageSrc()" [alt]="imageAlt()" loading="lazy" (error)="onMainImgError()" />
             @if (imageCredits(); as credits) {
               <figcaption class="info-section__credit">

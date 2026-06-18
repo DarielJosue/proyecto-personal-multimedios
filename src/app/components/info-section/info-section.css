@@ -171,11 +171,6 @@
   box-shadow: 0 12px 30px rgba(16,24,40,0.12);
 }
 
-/* Slightly larger effect on pointer movement for subtle 3D feel */
-.info-section__card-figure[data-tilt],
-.info-section__media[data-tilt] {
-  /* the actual transform is applied inline by the component handlers */
-}
 
 .info-section__placeholder {
   display: grid;

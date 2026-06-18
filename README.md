@@ -1,59 +1,70 @@
-# ProyectoPersonal
+# Proyecto: Propiedad Intelectual, Marcas y Emprendimiento
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.12.
+## Breve descripción
 
-## Development server
+Aplicación interactiva que explica —mediante secciones enriquecidas y audio— conceptos de propiedad intelectual (derechos de autor, marcas y patentes), con ejemplos y un caso práctico.
 
-To start a local development server, run:
+## Objetivo
 
-```bash
-ng serve
-```
+Proveer una guía visual y accesible para personas emprendedoras en Costa Rica sobre mecanismos de protección de activos intangibles.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tecnologías
 
-## Code scaffolding
+- Angular (framework front-end)
+- TypeScript
+- Three.js (biblioteca 3D) — si se usa en `src/components/interactive-diagram`
+- Node.js / Express (servidor para SSR cuando aplica)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Requisitos previos
 
-```bash
-ng generate component component-name
-```
+- Node.js (recomendado v16+ / v18+)
+- npm (v8+ / la versión incluida con su instalación de Node)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## Instalación de dependencias
 
 ```bash
-ng build
+npm ci
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Ejecución en desarrollo
 
 ```bash
-ng test
+npm start
 ```
 
-## Running end-to-end tests
+Abre `http://localhost:4200` en tu navegador.
 
-For end-to-end (e2e) testing, run:
+## Generar build de producción
 
 ```bash
-ng e2e
+npm run build
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+La salida de producción se escribe en `dist/proyecto-personal`.
 
-## Additional Resources
+## Comandos útiles
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- `npm ci` — instalar dependencias de forma reproducible
+- `npm start` — servidor de desarrollo (Angular dev server)
+- `npm run build` — crear build de producción
+- `npm run watch` — construir en modo watch (development)
+
+## Estructura básica del proyecto
+
+- `src/` — código fuente Angular
+  - `app/` — componentes y servicios de la aplicación
+  - `assets/` — recursos estáticos embebidos en `public/` via configuración
+- `public/assets/` — imágenes, audios y datos JSON consumidos por la app
+- `dist/` — salida de la compilación
+
+## Documentación y referencias
+
+La documentación de apoyo, créditos y referencias se encuentra en:
+
+- `docs/referencias.md` — créditos, enlaces y recursos consultados
+
+## Créditos
+
+Las imágenes y recursos multimedia utilizados están referenciados en `docs/referencias.md`
+
+
